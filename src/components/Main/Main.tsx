@@ -30,7 +30,7 @@ export function Main() {
   });
 
   const search = (values: any) => {
-    if (values.dateTime?.length > 1) {
+    if (values.dateTime?.length > 1 && values.dateTime[0] !== null && values.dateTime[1] !== null) {
       values.startDateTime = values.dateTime[0].toISOString();
       values.endDateTime = values.dateTime[1].toISOString();
       delete values.dateTime
