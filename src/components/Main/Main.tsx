@@ -16,13 +16,11 @@ export function Main() {
     fetch('http://127.0.0.1:8080/apps')
       .then(res => res.json())
       .then(res => {
-        console.log(res);
         setApps(res._embedded?.appList || [])
       })
     fetch('http://127.0.0.1:8080/audit-logs/object-types')
       .then(res => res.json())
       .then(res => {
-        console.log(res);
         setObjectTypes(res || [])
       })
   }, [])
@@ -32,7 +30,6 @@ export function Main() {
   });
 
   const search = (values: any) => {
-    console.log(values)
     if (values.dateTime?.length > 1) {
       values.startDateTime = values.dateTime[0].toISOString();
       values.endDateTime = values.dateTime[1].toISOString();
@@ -42,7 +39,6 @@ export function Main() {
     fetch('http://127.0.0.1:8080/audit-logs/search?' + queryString)
       .then(res => res.json())
       .then(res => {
-        console.log(res);
         setAuditLogs(res._embedded?.auditLogList || [])
       })
   }
